@@ -4,6 +4,8 @@ from sqlalchemy.orm import mapped_column
 from sqlalchemy import String
 from sqlalchemy import insert
 from sqlalchemy.orm import Session
+from sqlalchemy import select
+
 
 
 class Base(DeclarativeBase):
@@ -26,6 +28,12 @@ def Create(name, imagename, profile):
     mysession = Session(engine)
     mysession.execute(stmt) 
     mysession.commit()
+def fetchprofiles():
+    Code = select(Storage)
+    Connect = Session(engine)
+    crazydata = Connect.scalars (Code).all()
+    return crazydata
+
 def Read():
     pass
 def Update():
@@ -33,6 +41,7 @@ def Update():
 def Delete():
     pass
 
+fetchprofiles()
 
 
 
